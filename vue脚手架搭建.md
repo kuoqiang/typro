@@ -10,7 +10,7 @@
 
 2.     vue UI
 
-###  	文件创建
+###  	文件创建 
 
 ```javascript
 vue create  文件名 
