@@ -14,19 +14,9 @@
 
 
 
+
+
 ### 方法二
-
-   创建vue脚手架后
-
-   vue add element
-
-   选择fully element
-
-   选择zh-CN
-
-
-
-### 方法三
 
    创建vue脚手架后
 
