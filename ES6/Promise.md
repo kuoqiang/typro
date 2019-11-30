@@ -63,3 +63,27 @@ console.log(3);
 // 2
 // 1
 ```
+
+
+
+#### promise化
+
+```javascript
+function promisify(func){
+	return function(...arg){
+		return new Promise((resolve,reject)=>{
+            func(...arg,(err,data)=>{
+            if(err){
+                reject(err)
+            }else{
+                resolve(data)
+            }
+        })
+        })
+    }
+
+}
+
+let  readfile = promisify(fs.readFile)
+```
+

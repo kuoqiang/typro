@@ -80,23 +80,51 @@ var d2 = document.getElementById('d2');
 d1.nextSibling === d2 // true
 ```
 
-注意，该属性还包括文本节点和注释节点（` <!-- comment --> `）。因此如果当前节点后面有空格，该属性会返回一个文本节点，内容为空格。
+
+
+#### nextElementSibling   			下一个兄弟元素节点
+
+#### previousElementSibling      上一个兄弟元素节点 
 
 
 
-### 创建节点方法
+
+
+
+
+### 创建节点方法**
 
 ```javascript
+ 
+· crateAttribute(name)：　　　　　 　   用指定名称name创建特性节点
 
-· crateAttribute(name)：　　　　　 　用指定名称name创建特性节点
+· createComment(text)：　　　　　　　   创建带文本text的注释节点
 
-· createComment(text)：　　　　　　　创建带文本text的注释节点
+· createDocumentFragment()：　　　　	  创建文档碎片节点
 
-· createDocumentFragment()：　　　　创建文档碎片节点
+· createElement('tagname')：　　　　　 创建标签名为tagname的节点
 
-· createElement(tagname)：　　　　　 创建标签名为tagname的节点
+· createTextNode(text)：　　　　　　    创建包含文本text的文本节点
+```
 
-· createTextNode(text)：　　　　　　  创建包含文本text的文本节点
+
+
+#### 添加节点
+
+```js
+node.appendChild(child)     		//将一个节点添加到另一个节点子节点的末尾
+node.insertBefore(child,指定元素)	 //将一个节点插入到指定元素的前面  
+								    //node 父级  child 需要插入的子元素
+```
+
+
+
+#### 克隆节点
+
+```js
+var clone = node.cloneNode()		//克隆一份node的副本
+如果里面的参数为空或者false,则为浅拷贝，只克隆节点本身，而不会复制其子节点
+true为深拷贝，复制节点和其所有子节点
 ```
 
 
@@ -114,9 +142,7 @@ if (node.parentNode) {
 
 上面代码中，通过`node.parentNode`属性将`node`节点从文档里面移除。
 
-文档节点（document）和文档片段节点（documentfragment）的父节点都是`null`。另外，对于那些生成后还没插入 DOM 树的节点，父节点也是`null`。
-
-### 
+**文档节点（document）和文档片段节点（documentfragment）的父节点都是`null`。另外，对于那些生成后还没插入 DOM 树的节点，父节点也是`null`。**
 
 `parentElement`属性返回当前节点的父元素节点。如果当前节点没有父节点，或者父节点类型不是元素节点，则返回`null`。
 
@@ -126,17 +152,35 @@ if (node.parentElement) {
 }
 ```
 
-由于父节点只可能是三种类型：元素节点、文档节点（document）和文档片段节点（documentfragment）。`parentElement`属性相当于把后两种父节点都排除了。
+
+
+#### 实际开发获取子元素节点
+
+```
+.children[0]		//获得第一个子元素节点
+```
+
+
 
 
 
 #### firstChild  返回当前节点第一个子节点，无子节点返回null
 
+#### firstElementChild    返回当前节点得第一个子元素节点(IE9以上支持)
+
+
+
 #### lastChild  返回当前节点的最后一盒子节点，无子节点返回null
+
+#### lastElementChild    返回当前节点得最后一个子元素节点(IE9以上支持)
 
 
 
 ####  hasChildNodes  表示当前节点是否有子节点,返回布尔值。 
+
+
+
+#### element.removeChild()     //移除子节点
 
 下面是如何移除当前节点的所有子节点。
 
@@ -157,3 +201,10 @@ document.body属性指向<body>节点
 document.head属性指向<head>节点。
 ```
 
+
+
+
+
+#### document.write()
+
+如果页面内容全部加载完毕，进行document.write()操作会导致页面全部重绘(重新生成一个页面)
