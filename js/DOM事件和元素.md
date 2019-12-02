@@ -40,16 +40,51 @@ onmouseout		 鼠标离开触发
 
 onmousemove		 鼠标移动触发
 
-onkeydown		 键盘按下触发(对所有按键有效)
+onkeydown		 键盘按下触发(对所有按键有效,不区分字母大小写)
 
-onkeyup			 键盘松开触发(对所有按键有效)
+onkeyup			 键盘松开触发(对所有按键有效,不区分字母大小写)
 
-onkeypress  	 键盘按下松开触发(只对字符按键有效)
+onkeypress  	 键盘按下触发(不知别功能键,区分字母大小写)
 
 onfocus 		 鼠标得到焦点触发
 
 onblur 			 鼠标失去焦点
+
+执行顺序(onkeydown > onkeypress > onkeyup)
 ```
+
+
+
+#### mouseover和mouseenter的区别
+
+```js
+mouseover经过元素本身和其子元素都会触发
+mouseenter经过自己触发，经过子元素不触发(原因是mouseenter不会冒泡)
+```
+
+
+
+
+
+#### 禁止鼠标右键菜单
+
+```js
+document.addEventlistener('contextmenu',function(e){
+		e.preventDefalut();
+})
+```
+
+
+
+#### 禁止文字被选中
+
+```js
+document.addEventListener('selectstart',function(e){
+	e.preventDefalut();
+})
+```
+
+
 
 
 
@@ -88,10 +123,57 @@ onblur 			 鼠标失去焦点
 3.事件冒泡阶段
 ```
 
+  ```js
+//js代码只能执行事件捕获和事件冒泡其中的一个阶段
+
+//onclick和attachEvent只能得到冒泡阶段
+
+//onfocus,onblur,onmouseenter,onmouseleave 等事件是没有冒泡的
+
+addEventListener第三个参数为false则冒泡，true为捕获
   ```
-js代码只能执行事件捕获和事件冒泡其中的一个阶段
-onclick和attachEvent只能得到冒泡阶段
-  ```
+
+#### 事件源对象兼容性写法
+
+```js
+xxx.onclick = function(e){
+	 e = e || window.event;
+}
+```
+
+![1575165315872](C:\Users\小win\AppData\Roaming\Typora\typora-user-images\1575165315872.png)
+
+![1575132686554](C:\Users\小win\AppData\Roaming\Typora\typora-user-images\1575132686554.png)
+
+```js
+xxx.onclick = function(e){
+	return false;
+}
+//阻止默认事件的另一种方法
+```
+
+
+
+#### 阻止事件冒泡
+
+```
+
+```
+
+#### 不常用事件
+
+```js
+window.addEventListener('pageshow',function(){})
+//页面重新加载触发事件
+
+window.addEventListener('scroll',function(){})
+//滚动条滚动事件
+
+window.pageYOffset    //页面被卷曲的头部
+
+element.addEventListener('transitionend',function(){})
+//过渡完成后触发事件
+```
 
 
 
