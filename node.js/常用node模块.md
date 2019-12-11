@@ -5,7 +5,7 @@
 ```javascript
 var fs = require('fs');
 fs.readFile('sample.txt', 'utf-8', function (err, data) {
-    if (err) {
+    if (err) {//没有错误时err返回nulls
         console.log(err);
     } else {
         console.log(data);
@@ -130,3 +130,38 @@ const wss = new WebSocketServer({// 实例化:
     port: 3000
 });
 ```
+
+
+
+
+
+### path模块
+
+```js
+var path = require('path');
+var pathfile = path.join('a','b','c')   //路径拼接
+
+console.log(pathfile)   // a\b\c
+```
+
+
+
+
+
+#### url模块
+
+```js
+url.parse(req.url,true)  //url解析,第一个参数输入要解析的url，第二个参数是否转换成对象
+
+```
+
+
+
+#### querystring
+
+```
+
+```
+
+
+

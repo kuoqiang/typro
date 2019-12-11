@@ -4,7 +4,7 @@
 async function timeout() {　　return 'hello world';}
 ```
 
- 　只有一个作用, 它的调用会返回一个promise 对象。调用一下看看就知道了，怎么调用？async 函数也是函数，所以它的调用和普通函数的调用没有什么区别，直接加括号调用就可以了，为了看结果，console.log 一下
+ 　只有一个作用, 它的调用会返回一个promise 对象。调用一下看看就知道了，怎么调用？async 函数也是函数，所以它的调用和普通函数的调用没有什么区别，直接加括号调用就可以了，为了看结果，console.log 一下(默认返回promise对象，而不是undefined)
 
 ```javascript
 async function timeout() {
@@ -20,11 +20,7 @@ console.log(timeout());
 ```javascript
  方法执行后的返回值：  await命令后面可以是Promise对象或值，如果是值，就会转到一个立即resolve的Promise对象。async函数返回的是一个Promise对象，如果结果是值，会经过Promise包装返回。 
 
-
-
 await与并行：如果在一个async的方法中，有多个await操作的时候，程序会变成完全的串行操作，一个完事等另一个但是为了发挥node的异步优势，当异步操作之间不存在结果的依赖关系时，可以使用promise.all来实现并行，all中的所有方法是一同执行的。
-
-
 
 执行后的结果：async函数中，如果有多个await关键字时，如果有一个await的状态变成了rejected，那么后面的操作都不会继续执行，promise也是同理await的返回结果就是后面promise执行的结果，可能是resolves或者rejected的值使用场景循环遍历方便了代码需要同步的操作（文件读取，数据库操作等）
 
@@ -116,3 +112,4 @@ async1 end
 > “ async 函数返回一个 Promise 对象，当函数执行的时候，一旦遇到 await 就会先返回，等到触发的异步操作完成，再接着执行函数体内后面的语句。” ——阮一峰ES6
 
 简单的说，先去执行后面的同步任务代码，执行完成后，也就是表达式中的 Promise 解析完成后继续执行 async 函数并返回解决结果。（其实还是本轮循环promise的问题，最后的resolve属于异步，位于本轮循环的末尾。）
+
