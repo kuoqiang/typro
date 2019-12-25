@@ -201,6 +201,7 @@ const Post = mongoose.model('Post',postSchema)
 //min为最小数量(针对数字)
 //max为最大数量(针对数量)
 //enum为枚举，输入的值必须为enum的范围中的一个 		子属性 message,values
+//unique 保证属性的值是唯一的
 
 
 //validate  为自定义验证规则

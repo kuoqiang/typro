@@ -145,9 +145,17 @@ xxx.onclick = function(e){
 
 ![1575132686554](C:\Users\小win\AppData\Roaming\Typora\typora-user-images\1575132686554.png)
 
+
+
+#### 阻止默认行为
+
 ```js
 xxx.onclick = function(e){
 	return false;
+}
+
+xxx.onclick = function(e){
+	e.preventDefault();
 }
 //阻止默认事件的另一种方法
 ```
@@ -156,8 +164,10 @@ xxx.onclick = function(e){
 
 #### 阻止事件冒泡
 
-```
-
+```js
+xxx.onclick = function(e){
+    e.stopPropagation();//阻止事件冒泡
+}
 ```
 
 #### 不常用事件

@@ -79,3 +79,86 @@ npm install --production  下载生产环境的依赖
 
 
 
+
+
+####  art-template模板引擎
+
+```js
+npm install art-template
+const template = require('art-template')
+const html = template('模板路径',数据)
+
+
+输出
+//标准语法         {{ name }}
+//原始语法         <%= name %>
+标签解析
+//标准语法         {{@ name}}
+//原始语法         <%- name %>
+条件判断
+//标准语法         {{if age > 18}}
+//					年龄大于18
+//				  {{else if age < 18}}
+//					年龄小于18
+// 				  {{else}}
+//					年龄不符合要求
+//				 {{/if}}
+
+循环
+//标准语法   {{each target}}
+//				{{$index}} {{$value}}
+//			{{/each}}
+
+子模板
+//标准语法  {{include '模板路径'}}
+
+模板继承
+//{{block '标记名'}}继承内容{{/block}}
+//{{extend '继承的模板文件'}}
+
+模板配置
+npm install dateFormat
+//向模板中导入变量 template.defaults.imports.变量名 = 变量值
+//设置模板根目录  template.defaults.root = path.join(__dirname,'art文件路径')
+//设置默认模板后缀 template.defaults.extname = '.art'
+```
+
+
+
+#### router
+
+```js
+实现路由
+npm install  router
+const getRouter = require('router')
+const router = getRouter()
+router.get('请求地址'，(req,res)=>{
+    res.end('这是一个路由')
+})//get方式请求
+app.on('request',function(req,res){
+    router(req,res,()=>{
+        
+    })
+})
+```
+
+
+
+#### 静态资源访问服务处理
+
+```js
+npm install serve-static
+const serverStatic = require('serve-static')
+const serve = serveStatic('public')
+server.on('request',()=>{
+    serve(req,res)
+})
+server.listen(3000)
+```
+
+
+
+
+
+
+
