@@ -85,6 +85,7 @@ module.exports = {
 #### 配置html-webpack-plugin生成预览页面
 
 ```js
+
 1.运行 npm install html-webpack-plugin -D命令，安装生成预览网页的插件
 2.修改 webpack.config.js 文件头部区域，添加如下的配置信息:
 	//导入生成预览页面的插件，得到一个构造函数

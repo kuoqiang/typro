@@ -124,7 +124,7 @@ npm install @babel/preset-env @babel/plugin-transform-runtime @babel/plugin-prop
 
 ```js
 1.导入Vue构造函数
-import Vue from 'vue'
+import Vue from 'vue'     //main.js中
 
 2.导入APP根组件
 import APP from './components/APP.vue'
