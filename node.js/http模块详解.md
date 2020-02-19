@@ -3,8 +3,8 @@ var http = require('http');
 var app = http.createServer();
 app.on('request',function (req,res) {    
 		console.log('dada')    
-		response.write('<h1>这是一个输出流</h1>')    
-		response.end()
+		res.write('<h1>这是一个输出流</h1>')    
+		res.end()
 })
 ```
 

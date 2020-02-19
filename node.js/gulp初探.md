@@ -62,12 +62,18 @@ browsersync       //浏览器实时同步
 
 ```js
 gulp.task('htmlmin',function(){
-  gulp.src('./pinyougou/html/*.html')
-     .pipe(htmlmin({collapseWhitespace:true}))//不包含空格
-      		.pipe(gulp.dest('./dist/html'))
-    
-    
+  gulp.src('./pinyougou/html/*.html') //找到html文件夹中所有的html文件
+     .pipe(htmlmin({collapseWhitespace:true})) //压缩html文件
+      		.pipe(gulp.dest('./dist/html'))	//输出到dist文件中的html文件中
     
     })
+```
+
+
+
+#### 并行任务
+
+```js
+gulp.task('over')
 ```
 

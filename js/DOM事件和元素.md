@@ -107,7 +107,7 @@ document.addEventListener('selectstart',function(e){
 ```js
 1. xxx.onclick = null
 
-2. xxx,removeEventListener('click',fn)   
+2. xxx.removeEventListener('click',fn)   
 	//用监听事件方式解绑事件时不能用匿名函数，需要在外部定义事件函数
 
 3.xxx.detachEvent('onclick',fn)   			//ie 6,7,8

@@ -47,6 +47,8 @@ npm install typescript -g
 npm init -y  生成一个package.json文件夹
 tsc --init    初始化TS,创建tsconfig.json文件
 
+//查看typescript版本只能使用 tsc -v命令
+//将ts文件编译为js文件使用   tsc xxx.ts
 初始化的配置项
 {
     "compilerOptions":{
@@ -59,38 +61,8 @@ tsc --init    初始化TS,创建tsconfig.json文件
 
 然后再vscode中点击终端>运行任务>tsc:watch实时监听这个ts文件
 
-但是即使编译错误也会生成js文件，因此应该再配置文件中设置
+但是即使编译错误也会生成js文件，因此应该在配置文件中设置
 "noEmitOnError":true
 ```
 
 
-
-#### 格式化TS代码
-
-```
-在vscode中安装ESLint,Prettier-Code formatter两个插件
-然后   npm install eslint -g
-使用   eslint --init 管理
-	  在.eslintrc.js 中配置规则
-	  
-在目录下新建一个.prettierrc.js文件  粘贴复制配置代码
-           保存后自动格式化
-```
-
-
-
-![image-20191214214735166](C:\Users\小win\AppData\Roaming\Typora\typora-user-images\image-20191214214735166.png)
-
-
-
-#### 总结
-
-![image-20191214215053535](C:\Users\小win\AppData\Roaming\Typora\typora-user-images\image-20191214215053535.png)
-
-![image-20191214215123315](C:\Users\小win\AppData\Roaming\Typora\typora-user-images\image-20191214215123315.png)
-
-
-
-   Eslint规范主要使用Airbnb
-
-​	vscode配置settings.json
