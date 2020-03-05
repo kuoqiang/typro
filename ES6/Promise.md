@@ -56,7 +56,7 @@ setTimeout(function() {
 
 new Promise(function (resolve, reject) {
   resolve(2);
-}).then(console.log);
+}).then((resolve)=>{console.log(resolve)});
 
 console.log(3);
 // 3

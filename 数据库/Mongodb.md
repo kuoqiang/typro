@@ -29,7 +29,7 @@ net  start  mongodb		//启动mongodb服务器
 ```js
 //连接数据库
 const mongoose = require('mongoose')
-monsoose.connect('mongodb://localhost/数据库名'，{useUnifiedTopology:true,
+mongoose.connect('mongodb://localhost/数据库名'，{useUnifiedTopology:true,
                  useNewUrlParser: true})
 			.then(()=>{console.log('数据库连接成功')})
 				.catch((err)=>{console.log(err,'数据库连接失败')})

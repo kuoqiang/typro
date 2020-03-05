@@ -41,17 +41,17 @@ app.post('/add',(req,res)=>{
 
 
 
-#### 请求参数
+#### 请求参数获取
 
 ```js
 get参数
 //直接使用req.query获取
 post参数
-//直接使用req.body获取
 需要借助第三方包 body-parser
-const bodyParser = require('body-parser')  //引入body-parser模块
-app.use(bodyParser.urlencoded({ extended:false }));  
-//配置body-parser模块
+const bodyParser = require('body-parser')  				//引入body-parser模块
+app.use(bodyParser.urlencoded({ extended:false }));  	//配置body-parser模块
+//直接使用req.body获取
+
 ```
 
 
@@ -69,6 +69,10 @@ app.get('/request',(req,res,next)=>{
 app.get('/request',(req,res)=>{
 	res.send(req.name)
 })                //在请求参数中添加一个name属性,然后在下一个中间件中返回
+
+
+//返回状态码
+res.status(状态码)
 ```
 
 
@@ -109,7 +113,7 @@ app.use((req,res,next) => {
 app.get('/file',(req,res,next)=>{
     fs.readFile('xxx.txt','utf-t',(err,data)=>{
         if(err){
-            next(err)
+            next(err)	//中间件返回错误信息，下一个中间件就可以拿到这个错误信息
         }else{
             
         }res.send(data)
@@ -118,6 +122,7 @@ app.get('/file',(req,res,next)=>{
 
 app.use((err,req,res,next) => { /4个参数
     res.status(500).send(err.message)
+    //err.message可以拿到throw new Error抛出的错误信息
 })
 ```
 
@@ -143,7 +148,7 @@ app.use((err,req,res,next) => {
 
 
 
-#### 构建模块化路由
+#### 构建模块化路由(二级路由)
 
 ```js
 const express = require('express')
@@ -258,6 +263,7 @@ const schema ={
     email:Joi.string().email()
 }
 
+
 Joi.validate({ username:'abc',birthyear:1994},schema)
 				//验证对象                      验证规则 
 		//返回promise对象，成功则返回验证对象，失败返回错误信息
@@ -268,8 +274,94 @@ Joi.validate({ username:'abc',birthyear:1994},schema)
 //regex     验证正则表达
 //[Joi.string(),Joi.number()]  两种验证规则
 //integer   验证必须为整数
-//yan'zhe   验证必须为邮件格式
+//email   验证必须为邮件格式
+//valid   只匹配valid里面的值
 ```
 
 
+
+#### cookie解析
+
+```js
+const cookie = require("cookie-parser")
+app.use(cookie())//将cookie解析为对象,并且可以通过req.cookies找到
+
+res.cookie(key,value) //设置cookie
+```
+
+
+
+#### session
+
+```js
+const session = require('express-session')
+app.use(session({ secret:'secret key' }))  //解密session
+
+req.session.xxx = xxx  
+//通过这种方式会自动生成一个sessionId(加密形式)，并且随着请求传递给服务器端
+```
+
+
+
+#### formidable
+
+```js
+//引入模块
+	const formidable = require('formidable')
+//创建表单解析对象
+	const form = new formidable.IncomingForm();
+//设置文件上传位置路径
+	form.uploadDir = '/my/dir'
+//是否保留表单上传文件的扩展名
+	form.keepEtensions = false
+//解析表单
+```
+
+
+
+#### js文件读取
+
+```js
+	var file = document.querySelector('#file')
+    var preview = document.querySelector('#preview')	//img标签
+    
+    file.onchange = function(){
+        var reader = new FileReader();
+		//读取二进制文件
+		reader.readAsDataURL(this.files[0]);
+
+		//获取文件读取结果
+		reader.onload = function(){
+        console.log(reader.result)
+            preview.src = reader.result;
+    }
+    }
+	
+```
+
+
+
+
+
+#### mongoose分页查询
+
+```js
+let pagination = require('mongoose-sex-page')
+let result = await pagination(集合构造函数).page(当前页码).size(每一页显示的数据条数).display(当前显示的页码数据).exec()//向数据库发送查询请求
+
+//返回结果
+	{
+        "page":1,//当前页
+        "size":2,//每页显示数据条数
+        "total":8,//总共的数据条数
+        "reords":[
+            //查询出来的具体数据
+            {
+                .......
+            }
+        ],
+        "pages":4,//总共的页数
+        "display":[1,2,3,4]//客户端显示的页码
+    }
+```
 
