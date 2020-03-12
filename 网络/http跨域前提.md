@@ -61,3 +61,45 @@ app.get('/callback',(req,res)=>{
 //我们想让返回的数据返回后对数据进行操作，那就只能在前端页面上提前定义一个fn函数。而发送请求后，返回的的字符串`fn({name:'zhangsan',age18})`会变成js代码直接运行，而之所以要把这个函数包装成字符串是因为不想让它在服务器端直接运行。
 ```
 
+
+
+#### Ajax全局事件
+
+```js
+.ajaxStart()	//当请求开始发送时触发
+
+$(document).on('ajaxStart',function(){
+    NProgress.start(); 
+})
+
+.ajaxComplete()	//当请求完成时触发
+
+$(document).on('ajaxComplete',function(){
+    NProgress.done();
+})
+```
+
+
+
+#### NProgress
+
+```html
+//引入文件
+	<link rel='stylesheet' href='nprogress.css'>
+	<script src='nprogress.js'></script>
+
+NProgress.start(); 	//进度条开始运动
+NProgress.done();	//进度条结束运动
+```
+
+
+
+#### RESTful 规范
+
+```
+GET: 获取数据
+POST:添加数据
+PUT: 更新数据
+DELETE:删除数据
+```
+

@@ -87,3 +87,41 @@ function promisify(func){
 let  readfile = promisify(fs.readFile)
 ```
 
+
+
+#### promise三种状态
+
+```js
+未决状态 pending
+从未决状态推向已决的resolved状态的过程，叫做resolve(拿到正确数据)
+从未决推向已决的rejected状态的过程，叫做reject(网络不好或其他原因导致出错)
+
+针对resolved的后续处理，我们称之为thenable
+针对rejected的后续处理，称之为catchable
+
+var task = new Promise(function(resolve,reject){
+    //任务在未决阶段的代码，这个代码是立即执行的
+    if(正常结果){
+        resolve(成功参数)	//推向成功状态resolved
+    }else{
+        reject(失败参数)	//推向失败状态rejected
+    }
+})
+
+//任务进入已决状态后(resolved或rejected)，状态将不会再改变
+```
+
+
+
+#### Promise.all()
+
+```js
+var newPro = Promise.all(promise对象数组)
+//返回一个新的Promise对象，只有newPro中的所有promise任务成功后才能成功，有一个失败就直接失败
+newPro.then((data)=>{
+    //所有Promise任务成功
+}).catch((err)=>{
+    //存在Promise任务失败
+})
+```
+
