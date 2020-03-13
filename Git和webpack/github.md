@@ -37,3 +37,18 @@ git pull 远程仓库地址 分支名称
 
 ```
 
+
+
+
+
+
+
+#### github访问慢
+
+```
+1.翻墙
+2.改hotst文件
+然后cmd输入  ipconfig /flushdns
+重启电脑
+```
+
