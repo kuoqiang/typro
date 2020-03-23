@@ -1,0 +1,455 @@
+1.javascript的typeof返回哪些数据类型
+Object number function boolean underfind string
+
+2.例举3种强制类型转换和2种隐式类型转换?
+强制（parseInt,parseFloat,number）
+隐式
+
+3.split() join() 的区别
+前者是切割成数组的形式，后者是将数组转换成字符串
+
+4.数组方法pop() push() unshift() shift()
+Push()尾部添加 pop()尾部删除
+Unshift()头部添加 shift()头部删除
+
+5.事件绑定和普通事件有什么区别
+普通添加事件的方法不支持添加多个事件，最下面的事件会覆盖上面的，而事件绑定（addEventListener）方式添加事件可以添加多个。
+
+6.IE和DOM事件流的区别
+1.执行顺序不一样
+2.参数不一样
+3.事件加不加on
+4.this指向问题
+
+8.ajax请求的时候get 和post方式的区别
+一个在url后面 一个放在虚拟载体里面
+有大小限制
+安全问题
+应用不同 一个是论坛等只需要请求的，一个是类似修改密码的
+
+9.call和apply的区别
+传递参数的方式。用法上不同，主要是参数不完全同
+
+10.ajax请求时，如何解释json数据
+使用eval parse 鉴于安全性考虑 使用parse更靠谱
+
+11.b继承a的方法
+   b.prototype=new a;
+ 
+13.事件委托是什么
+让利用事件冒泡的原理，让自己的所触发的事件，让他的父元素代替执行！
+
+14.闭包是什么，有什么特性，对页面有什么影响
+闭包就是能够读取其他函数内部变量的函数。
+
+15.如何阻止事件冒泡和默认事件
+canceBubble return false
+
+16.添加 删除 替换 插入到某个接点的方法
+obj.appendChidl()
+obj.innersetBefore
+obj.replaceChild
+obj.removeChild
+
+17.解释json的原理，以及为什么不是真正的ajax
+动态创建script标签，回调函数
+Ajax是页面无刷新请求数据操作
+
+18.javascript的本地对象，内置对象和宿主对象
+本地对象为array obj regexp等可以new实例化
+内置对象为gload Math 等不可以实例化的
+宿主为浏览器自带的document,window 等
+
+19.document load 和document ready的区别
+Document.onload 是在结构和样式加载完才执行js
+Document.ready原生种没有这个方法，jquery中有 $().ready(function)
+
+20.”==”和“===”的不同
+前者会自动转换类型
+后者不会
+
+21.javascript的同源策略
+一段脚本只能读取来自于同一来源的窗口和文档的属性，这里的同一来源指的是主机名、协议和端口号的组合
+
+22.编写一个数组去重的方法
+function oSort(arr)
+{
+var result ={};
+var newArr=[];
+for(var i=0;i<arr.length;i++)
+{
+if(!result[arr])
+{
+newArr.push(arr)
+result[arr]=1
+}
+}
+return newArr
+}
+
+23.javascript有哪些数据类型：
+   原始类型：值直接保存在变量本地的类型
+	5类：Number     String     Boolean    undefined    null
+   引用类型：值没有直接保存在变量本地的类型
+
+24.事件的三要素
+   事件源+事件+事件处理程序
+
+25.隐藏样式
+   display:none  隐藏不占位置
+   visibility:hidden  隐藏占有位置
+   overflow:hidden  隐藏超出的部分
+
+26.入口函数 window.onload=function(){
+              内部放js
+            }
+当页面加载完毕之后，采取执行函数体里的js部分
+
+27.js的三种书写格式
+   行内式 <button onclick="alert('你好吗')">点击我</button>  
+   内嵌式 <script type="text/javascript">
+          </script>
+   外链式 <script type="text/javascript" 
+          src="...js"></script>
+   
+28.五种数据类型
+   number string boolean null undefined
+
+29.什么是函数
+   函数就是由事件驱动的或者当它被调用时执行的可重复使用的代码块
+
+30.函数的声明方式
+   1.自定义函数的声明
+     function fun(){
+       ...
+     }
+     fun();
+   2.函数直接量声明
+     var fun1=function(){
+       ...
+     }
+     fun1();
+   3.利用Function关键字声明
+     var fun2=new Function("...");
+     fun2();
+
+31.什么是变量声明的提升
+   在函数体内声明变量会把该声明提升到函数体的最顶端，只提升变量声明不赋值
+
+32.函数参数
+   arguments是存储了函数传送过来的实参
+   js在创建函数的同时会在函数内部创建一个arguments对象实例
+   arguments对象只有函数开始时才可用。函数的arguments对象并不是一个数组，访问单个参数的方式与访问数组元素的方式相同
+   arguments对象的长度是由实参个数而不是形参个数决定的
+
+33.onfocus 获得焦点
+   onblur 失去焦点
+   innerHTML 更换盒子里面的内容，标签也换掉
+   Input.value表单更换内容
+
+34.声明数组
+   var arr=[1,3,5,7,9];
+   var arr=new Array(1,3,5);
+
+35.如何设计一个带表盘的时钟？
+
+答：一个div做表盘使用圆角，然后另外3个div嵌入其中做为表针，其中表盘使用相对定位，表针使用绝对定位，在css中有transform:rotate()来使表针进行旋转，在js中使用一个定时器来控制表针的转动
+
+36.js有哪些内置对象？
+
+答：Object是js中所有对象的父对象
+    数据封装类对象：Object,Arrar,Boolean,Number,String
+    其他对象：Function,Math,Date,RegExp,Error
+
+37.说几条js的基本规范？
+
+答：1.不能在同一行声明多个变量
+    2.请使用===/!==来比较true/false或者数值
+    3.使用对象字面量替代new Array这种形式
+    4.不要使用全局函数
+    5.Switch语句必须带有default分支
+    6.函数不应该有时候有返回值有时候没有返回值
+    7.for循环和if语句必须使用大括号
+    8.for-in循环中的变量，应该使用var关键字明确限定作用域从而避免污染
+
+38.js原型，原型链有什么特点？
+
+答：每个对象都会在其内部初始化一个属性，就是prototype（原型），当我们访问一个对象的属性时，如果这个对象内部不存在这个属性，那么他就会去prototype里找这个属性，这个原型又会有自己的原型，于是一直这样找下去就是我们平常说的原型链的概念。
+    特点：js对象是通过引用来传递的，我们创建的每个新对象实体中并没有一份属于自己的原型副本。当我们修改原型时与之相关的对象也会继承这一改变。
+
+39.js有哪几种类型的值，你能画出他们的内存图吗？
+
+答:栈：原始数据类型(Undefined,Null,Boolean,Number,String)
+   堆：引用数据类型（对象,数组，函数）
+   两种类型的区别是：存储位置不同；
+       原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；
+   引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定,如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解   释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体
+
+40.html绑定事件和js绑定事件的区别？
+
+答：1.html绑定的其实是字符串,不能用this，html绑定this只能通过在html中显式传入，并且用变量接住
+    2.js中动态绑定，处理函数内的this就指当前触发事件的元素对象本身
+
+41.js如何实现继承？
+
+答：1.构造继承，使用call或apply方法，将父对象的构造函数绑定在子对象上
+    2.原型继承，把不变的属性和方法直接定义在prototype对象上
+    3.object()方法,把子对象的prototype属性,指向父对象，从而使得子对象与父对象连在一起
+    4.拷贝继承
+
+42.js创建对象的几种方法？
+
+答：js创建对象无非是使用内置对象或各种自定义对象，当然还可以用json；写法多种且能混合使用
+    1.对象字面量的方式
+      person={firstname:"Mark",age:"25"};
+    2.用function来模拟无参的构造函数
+    3.用function来模拟含参的构造函数(this关键字定义构造函数的上下文属性)
+    4.用工厂的方式来创建(内置对象)
+    5.用原型的方式来创建
+    6.用混合方式来创建
+
+43.什么是js的作用域和作用域链？
+
+答：作用域,一个变量的可用范围，实际上就是变量存储的实际位置
+    作用域链，以当前EC的scope属性为起点依次引用每个AO直到window结束形成的多级引用关系
+
+44.谈谈对this对象的理解
+
+答：1.this总是指向函数的直接调用者；
+    2.如果有new关键字，this指向new出来的那个对象；
+    3.在事件中，this指向触发这个事件的对象，特殊的是，在ie中的attachEvent中的this总是指向全家对象Window；
+
+45.eval是做什么用的？
+
+答：它的功能是把字符串解析成js代码并运行，一般是用来将json字符串转换为json对象的时候应用。它的缺点是不安全，效率低，一次解析一次执行
+
+46.null和undefined的区别？
+
+答：null   表示一个对象被定义了但是值为空值；
+    undefined  表示不存在这个值
+ 
+    typeof null//"object"
+    null是一个对象
+    typeof undefined//"undefined"
+    undefined表示应该有值但未定义
+
+47.如何判断一个对象是否属于某个类？
+
+答：使用instanceof
+
+48.new操作符具体干了些什么？
+
+答：1.创建一个空对象，并且this变量引用该对象，同时还继承了该函数的原型
+    2.属性和方法被加入到this引用的对象中
+    3.新创建的对象由this所引用，并且隐式的返回this
+
+49.js中，有一个函数，执行时对象查找时永远不会查找原型，这个函数是？
+
+答：hasOwnProperty函数方法是返回一个布尔值，指出一个对象是否具有指定名称的属性，此方法无法检查该对象的原型链中是否具有该属性；该属性必须是对象本身的一个成员
+    使用方法：
+    object.hasOwnProperty(proName)
+    其中参数object是必选项，一个属性名称的字符串值
+    如果object具有指定名称的属性，则返回true，否则返回false
+
+50.你对json的了解？
+
+答：json就是一个轻量级的数据交换格式，它是基于js的一个子集，数据格式简单，易于读写，占用宽带小
+如：{"age":"12", "name":"back"}
+
+JSON字符串转换为JSON对象:
+var obj =eval('('+ str +')');
+var obj = str.parseJSON();
+var obj = JSON.parse(str);
+
+JSON对象转换为JSON字符串：
+var last=obj.toJSONString();
+var last=JSON.stringify(obj);
+
+51.js延迟加载的方式有哪些？
+
+答：defer和async,动态创建dom方式，按需异步载入js
+
+52.同步和异步的区别？
+
+答：同步的概念应该是来自于OS中关于同步的概念:不同进程为协同完成某项工作而在先后次序上调整(通过阻塞,唤醒等方式).同步强调的是顺序性.谁先谁后.异步则不存在这种顺序性.
+
+同步：浏览器访问服务器请求，用户看得到页面刷新，重新发请求,等请求完，页面刷新，新内容出现，用户看到新内容,进行下一步操作。
+
+异步：浏览器访问服务器请求，用户正常操作，浏览器后端进行请求。等请求完，页面不刷新，新内容也会出现，用户看到新内容。
+
+53.什么是事件，如何使用事件以及IE和标准DOM事件模型之间存在的差别？
+
+答：事件是指浏览器自动触发或者用户手动触发浏览器状态的改变就叫事件；绑定事件函数，获取事件对象；dom标准的时间周期为3个阶段，事件捕获，目标触发和冒泡触发；ie的是有目标触发和冒泡触发
+
+54.事件处理函数有几种绑定方法？
+
+答：1.在html元素开始标签中绑定，<elem on事件名="jd语句"...
+    2.一个事件函数只能绑定一个函数对象
+      elem.on事件名=function(){}
+    3.为一个事件处理函数绑定多个函数对象
+      dom标准：elem.addEventListener("事件名"，函数对象，true/false);
+      ie8：elem.attachEvent("on+事件名"，函数对象);
+
+55.css代码重构以及如何优化及提高性能？
+
+答：代码重构的目的：提高代码性能；提高代码的可维护性
+    提高代码性能：1.提高页面的加载性；2.提高css的代码性能
+    提高代码的可维护性：1.可重用性；2.可扩展性；3.可修改性
+    提高性能的手段：
+        1.将样式写在单独的css文件里，在head元素中引用；        2.不使用@import
+        3.避免使用复杂的选择器，最好不要超过3层
+        4.精简页面的样式文件，去掉不用的样式
+        5.利用css继承减少代码量
+    提高可维护性的方法：
+        1.命名与备注
+        2.提取重复样式
+        3.建立正确的书写顺序与良好的书写习惯
+
+56.js中如何实现类?怎么实例化这个类
+
+答：构造函数法，Object.creaate()法，极简主义法；使用new，this,prototype
+
+57.什么是html5的离线存储，解释一下工作原理？
+
+答：离线存储就是指在浏览网页的时候把要缓存的文件通过离线缓存机制下载到电脑上，使得用户在没有与因特网连接时可以正常访问站点或应用，在用户与因特网连接时，能够更新用户机器上的缓存文件。
+    原理：html5的离线存储是基于一个新建的.appcache文件的缓存机制，通过这个文件解析清单上的离线存储资源，这些资源就像cookie一样被存储了下来。之后当用户处于离线状态下，浏览器会通过离线存储的数据进行页面展示。
+
+58.浏览器如何对html5的离线存储资源进行管理和加载的？
+
+答：在线的情况下，浏览器发现html头部有manifest属性，他会请求manifest文件，如果第一次访问app，那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。当再次访问该app时，浏览器会使用离线的资源加载，然后浏览器会对比新的mainfest文件与旧的，如果文件没有发生改变就不做任何操作，文件变了则会重新下载文件中的资源。离线的情况下，浏览器就可以直接使用离线存储的资源
+
+59.cookies，sessionStorage，localStorage的区别？
+
+答：cookies是一种能够让服务器把少量数据储存到客户端的硬盘或内存，或从客户端的硬盘读取数据的一种技术。cookies是当你浏览网站时，由web服务器置于你硬盘上的一个非常小的文本文件，记录你的信息。当你再次来到该网站的时候，网站通过读取cookies得知你的相关信息做出相应的动作。
+   区别：cookies是网站为了标示用户身份而储存在用户本地终端上的数据。cookie数据始终在同源的http请求中携带，即会在浏览器和服务器之间来回传递。而storage不会自动把数据发给服务器，仅在本地保存。
+   存储大小：cookie数据大小不能超过4k，storage大得多
+   有效时间：
+   localStorage 存储持久数据，浏览器关闭后数据不丢失除非主动删除
+   sessionStorage数据在当前浏览器窗口关闭之后自动删除
+   cookie 设置的cookie在过期前一直有效
+
+60.谈谈js中的垃圾回收机制和内存管理
+
+答：垃圾回收器会周期性的找出那些不在继续使用的变量，然后释放其内存。最常用的方式是标记清除和引用计数。为确保占用最少的内存让页面获得更好的性能，优化内存占用的最佳方式就是为执行中的代码只保存必要的数据。一旦数据不再有用，最好通过将其值设置为null来释放其引用--这个方法也叫做解除引用。
+
+61.什么是内存泄漏以及如何解决内存泄漏问题？
+
+答：内存泄漏指一块被分配的内存既不能被使用又不能被回收，直到浏览器进程结束。由于浏览器在垃圾回收过程中会产生bug，所以会产生内存泄漏。
+    内存泄漏的几种情况：
+    1.当页面中元素被移除或者被替换时，若元素绑定的事件仍没被移除，在ie中不会做出恰当的处理会造成内存泄漏。
+      解决方法：手工移除事件或者采用事件委托
+    2.在ie中，如果循环引用中的任何对象是dom节点，垃圾收集系统不会发现它们之间的循环关系与系统中的对象是隔离的并释放他们。最终被保留在内存中。
+      解决方法：避免使用循环引用
+    3.闭包可以维持函数内局部变量使其得不到释放
+      解决方法：将事件处理函数定义在外部解除闭包或者在定义事件处理函数的外部函数中删除对dom的引用
+    4.有些已删除的属性引用依然存在
+      解决方法：在销毁对象的时候要依次遍历属性中的属性
+    5.字符串做运算的时候会自动创建一个对象导致对象泄漏
+      解决方法：在做运算之前显式转换一下
+
+62.举个例子来说明什么是闭包
+
+答：function f1(){
+      var n=1;
+      function f2(){
+        console.log(n);
+      }
+      return f2();
+    }
+    var foo=f1();
+    foo();
+
+63.for(var i=0;i<$vals.length;i++){
+      var =$vals[i];
+      console.log($(val).text());
+  }
+  val是DOM对象还是jQuery对象？DOM对象
+
+64.alert("xxxyyy"),要求换行
+  alert("xxx\nyyy");
+
+65.var str="a,b,c,d,e,f,g";颠倒输出
+  var arr=str.split(",");
+  var string=arr.reverse();
+  console.log(string.toString());
+  
+  var str="abcdefg";
+  var arr=str.split("");
+  var string=arr.reverse();
+  console.log();
+
+66.DOM对象和jQuery对象如何相互转换
+
+答：DOM对象转换成jQuery对象
+    $(DOM对象)
+    jQuery对象转换为jQuery对象
+    DOM对象=jQuery对象[索引值]
+    DOM对象=jQuery对象.get(index)
+
+67.html dom和核心dom的区别？
+
+答：核心dom：既可以对xml文档也可以对html文档进行操作
+    html dom：用于对html文档进行操作，简化了api
+    核心dom：优点：可以对文档进行任何操作，适合操作节点，如创建，删除，查找等
+             缺点：API操作繁琐
+    HTML DOM：优点：简化了api，适合操作属性，如读取或修改属性
+              缺点：有的操作需要核心 DOM补充
+
+68.ready与onload的区别
+
+答：ready
+         有简写方式
+         在html页面中能够编写多个
+         必须等待html页面中所有dom元素都加载完毕后在执行
+            执行速度快
+    onload
+         无简写方式
+         在html页面中只能存在一个
+         必须等html页面中所有内容都加载完毕后在执行
+            执行速度慢
+
+69.html5离线储存怎么使用，解释一下工作原理
+
+答：在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时更新用户机器上的缓存文件
+    原理：html5的离线存储是基于一个新建的.appcache文件的缓存机制，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后在网络处于离线状态下时，浏览器就会通过被离线存储的数据进行页面展示
+
+    如何使用：
+    1.在页面头部的下面加入一个mainfest的属性
+    2.在cache.manifest文件中编写离线存储的资源
+    3.在离线状态时，操作window.applicationCache进行需求实现
+
+70.浏览器怎么解析manifest
+
+答：在线的情况下，浏览器发现html头部有manifest属性，会请求manifest文件，如果是第一次访问app，那么浏览器会根据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器就会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，不做改变，否则会重新下载文件中的资源并且进行离线存储
+    离线的情况下，浏览器直接使用离线存储的资源
+
+71.js创建对象的几种方式
+
+答：1.对象字面量的方式，json格式
+      person={firstname:"mark",lastname:"wyk",profession:"mm"};
+    2.用function来模拟无参的构造函数
+      function Person(){}
+        var person=new Person();
+        person.name="wyl";
+        person.work=function(){
+          alert(person.name);
+        } 
+        person.work();
+    3.用function来模拟含参构造函数的实现(用this关键字定义构造上下文属性)
+      function Pet(name,age,hobby){
+         this.name=name;
+         this.age=age;
+         this.hobby=hobby;
+         this.eat=function(){
+           alert("我叫"+this.name+",我喜欢"+this.hobby+",是个程序员");
+         }
+
+72.快速找到未知长度单链表的中间节点
+
+答：利用快慢指针，设置两个指针*search,*mid，其中search的移动速度是mid的2倍，当search指向末尾节点的时候，mid正好在中间了，这也是标尺的思想
+
+
+
+
+
+

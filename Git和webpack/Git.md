@@ -22,7 +22,8 @@ git init 					初始化git仓库
 
 git status 					查看文件状态
 
-git add 文件列表 			  增加文件到暂存区		
+git add 文件列表 			  增加文件到暂存区	
+git add .					把所有文件添加到暂存区
 
 git commit -m 提交说明信息	 提交文件
 

@@ -39,7 +39,20 @@ git pull 远程仓库地址 分支名称
 
 
 
+#### git忽略清单
 
+```js
+添加一个文件名为 .gitignore  的文件
+node_modeules  //忽略node_modules文件夹
+```
+
+
+
+#### 仓库详细说明
+
+```
+README.md 文件中输入详细信息
+```
 
 
 
@@ -50,5 +63,15 @@ git pull 远程仓库地址 分支名称
 2.改hotst文件
 然后cmd输入  ipconfig /flushdns
 重启电脑
+```
+
+
+
+
+
+#### 检测ip的网站
+
+```
+52.74.223.119
 ```
 
