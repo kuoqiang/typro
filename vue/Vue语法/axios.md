@@ -1,0 +1,19 @@
+#### 组件内使用axios
+
+```js
+import axios from 'axios'
+Vue.prototype.$http = axios;
+
+这样每个组件都可以通过this直接访问到$http发送ajax请求
+```
+
+
+
+
+
+#### 设置axios根路径
+
+```
+axios.defaults.baseURL = 'xxx'
+```
+
