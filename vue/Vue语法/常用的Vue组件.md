@@ -51,3 +51,44 @@ lodash
 import _ from 'lodash'
 ```
 
+
+
+#### 请求进度条
+
+```js
+nprogress
+
+import Nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+
+Nprogress.start()	//展示进度条
+Nprogress.done()	//隐藏进度条
+```
+
+
+
+#### 项目上线时自动移除console信息
+
+```js
+babel-plugin-transform-remove-console
+//development 开发环境
+//production  生产环境(上线)
+
+安装依赖后在 .babel.config.js文件中配置
+const prodPlugins = []
+if(process.env.NODE_ENV === 'production'){//判断当前环境
+	prodPlugins.push('transform-remove-console')
+}
+
+module.exports = {
+    {
+	plugin:[
+        ...prodPlugins
+    ]
+}
+}
+```
+
+
+
