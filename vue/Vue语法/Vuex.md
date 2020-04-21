@@ -173,3 +173,30 @@ export default {
 
 ```
 
+
+
+#### Module
+
+```js
+	由于使用单转台树，应用到的所有状态会集中到比较大的对象，当应用变得非常复杂时，store对象就有可能变得相当臃肿。
+    为了解决以上问题，Vuex允许我们将store分割成模块,每个模块拥有自己的state、mutation、action、getter
+
+	获取state:this.$store.state.moduleName.xxx
+    其他getters、mutations不变
+    可以通过mapXXX的方式拿到getters、mutations、actions，但是无法拿到state,如果想通过这种方式拿到state,需要在Module中加入命名空间
+
+
+通过namespaced:true  的方式使其称为带命名空间的模块
+	获取state:this.$store.state.moduleName.xxx
+	获取getter:this.$store.getters['muduleName/xxx']
+	获取mutation:this.$store.commit('moduleName/xxx')
+	获取action:this.$store.commit('moduleName/xxx')
+
+    ...mapState('muduleName',['xxx'])
+	...mapGetters('muduleName',['xxx'])
+	...mapMutations('muduleName',['xxx'])
+
+并且模块中的state和context拿到的是局部的数据，根节点状态需要通过context.rootState拿到
+对于命名中间的gettes有三个参数(state,getters,rootState)
+```
+

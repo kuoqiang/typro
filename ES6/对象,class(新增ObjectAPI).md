@@ -45,13 +45,15 @@ user[prop3];
 ```js
 Object 是一个函数，新增的API实际上是附着在这个函数对象上的静态方法
 
-Object.is   判断两个数据是否相等,基本上和严格相等(===)一致
-                                
-console.log(NaN === NaN)  //false
-console.log(+0 === -0)    //true  实际上在在二进制中符号位不同
-console.log(Object.is(NaN,NaN))     //true
-console.log(Object.is(+0,-0)) 		//false
+Object.is   判断两个数据是否相等,基本上和严格相等(===)一致            
+	console.log(NaN === NaN)  //false
+	console.log(+0 === -0)    //true  实际上在在二进制中符号位不同
+	console.log(Object.is(NaN,NaN))     //true
+	console.log(Object.is(+0,-0)) 		//false
 
+Object.keys()	//返回一个对象所有属性名的数组
+
+Object.values() //返回一个对象所有属性值的数组
 
 Object.assign     混合对象
 
@@ -65,7 +67,7 @@ const obj2 = {
     d:"kkk"
 }
 const obj = Object.assgin(obj1,obj2);
-//将obj2的数据覆盖到obj1的数据中，并且会改动obj1,然后返回obj1
+//将obj2的数据覆盖到obj1的数据中，并且会改动obj1,**然后返回obj1
 Object.assign基本不用，最好使用ES7的...对象
 const obj = {
     ...obj1,
@@ -77,23 +79,47 @@ Object.getOwnPropertyNames  枚举顺序
 将对象内的属性放到数组中并返回，先排数字，按照升序排列。再排列其他。
 
 
-
-
-Object.defineProperty(obj,prop,desc)  
-直接在一个对象上定义一个新属性，或者修改一个已经存在的属性
-
-Object.defineProperty(obj,"a",{
-    value:37,
-    writable:true,
-    enumerable:true,
-    configurable:true
-});
-
-
 Object.setPrototypeOf    设置某个对象的隐式原型
 Object.setProtitypeOf(obj1,obj2)
 //相当于把obj1.__proto__ = obj2;
 做圣杯模式可以使用它
+
+
+Object.defineProperty(obj,prop,desc)  
+//直接在一个对象上定义一个新属性，或者修改一个已经存在的属性
+
+Object.defineProperty(obj,"a",{
+    value:37,		//属性值
+    writable:true,	//该属性是否能可写
+    enumerable:true,
+    //该属性是否能被枚举，会影响Object.keys 和 Object.values
+    configurable:true, //是否能对该属性描述符进行修改
+    
+    
+    //如果一个属性的属性描述符里存在get和set方法，那么这个属性会变成存取器属性，该属性不会开辟内存空间存值，而是读取该属性时运行get方法，设置该属性时运行set方法
+    get(){
+		return obj._val
+    },
+    set(val){
+		obj._val = val;
+    }
+});
+
+Object.definePropertys(obj,{
+    a:{
+        value:3,
+        .......
+    },
+    b:{
+        
+    }
+})
+
+
+//得到一个对象的某个属性描述符
+Object.getOwnPropertyDescriptor(对象，属性名)
+//返回一个对象的所有属性描述符
+Object.getOwnPropertyDescriptors(对象)
 ```
 
 
