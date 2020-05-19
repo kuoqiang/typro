@@ -48,3 +48,13 @@ ReactDOM.render(	h1,									// React元素
 
 ```
 
+
+
+#### 用脚手架创建React项目
+
+```react
+npx create-react-app 项目名
+cd 项目名
+yarn start
+```
+
