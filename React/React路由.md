@@ -43,9 +43,17 @@
 
 #### 路由信息
 
-```
+```react
 在React中,Router组件会创建一个上下文，并且向上下文中注入一些信息
 该上下文对开发者是隐藏的，React组件如果匹配到了路由，就会将这些上下文信息作为属性传递给对应的组件
+
+某些组件，并没有直接放在Router中,而是嵌套在其他组件里，因此，它的props中没有路由细腻些，如果这些组件获取到路由细腻些，可以使用下面两种方式。
+
+1.将路由信息从父组件一层层传递到子组件中(子组件通过{..props接收})
+2.使用react-router提供的高阶组件withRouter包装要使用的组件，该高阶组件会返回一个新组件，新组件将向提供的组件注入路由信息。
+
+const wrapperA = withRouter(A)
+<wrapperA/>
 ```
 
 
@@ -95,5 +103,19 @@ history.replaceState(参数1,参数2,参数3)
 参数1:附加的数据，自定义的数据，可以是任何类型
 参数2:页面标题，目前大部分浏览器不支持
 参数3:新的地址
+```
+
+
+
+#### 经常用到的react-router-dom中的组件
+
+```react
+Router: BrowserRouter、HashRouter
+Route
+Switch
+withRouter
+Link				//生成一个无刷新跳转的a元素
+NavLink		//给匹配的url添加样式(和Link的唯一区别)
+Redirect
 ```
 
