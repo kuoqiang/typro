@@ -80,6 +80,29 @@ function reducer(state,action){
         }
     }
 
+    
+    //合并reducer
+    import loginUser from './loginUser'
+	import users from './users'
+
+	export default (state,action) => {
+        const newState = {
+            loginUser:loginUser(state.loginUser,action),
+            users:users(state.users,action)
+        }
+        
+        return newState;
+    }
+
+    
+    //redux中合并reducer的方法
+    import loginUser from './loginUser'
+	import users from './users'
+    import { combineReducers } from 'redux'
+	export default combineReducers({
+        loginUser,
+        users
+    })
 ```
 
 
@@ -87,12 +110,20 @@ function reducer(state,action){
 #### store
 
 ```react
+//数据仓库，用于保存数据
+
 import { createStore } from "redux"
 //reducer改变状态后会将结果返回给store
 
 const store = CreateStore(reducer,"数据默认值")	//创建一个store仓库
 
-store.getState()		//获取仓库中的数据
+store.getState()			//获取仓库中的状态数据
+store.dispatch()			//用于分发一个action
+store.replaceReducer()		//仓库保持不变，替换当前的reducer
+store.subsribe(()=>{
+		console.log("监听器触发了")
+})
+//注册一个监听器，监听器是一个无参函数，当分发一个action之后会运行
 
 
 
