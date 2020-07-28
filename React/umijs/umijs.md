@@ -15,6 +15,15 @@ umi约定,工程中的pages文件夹中存放的是页面。
 
 
 
+#### umi脚手架
+
+```react
+ 新建一个文件夹
+ yarn create umi  //直接在该文件夹内生成模板
+```
+
+
+
 
 
 #### 约定式路由
@@ -78,6 +87,57 @@ umi约定,工程中的pages文件夹中存放的是页面。
 
 
 
+#### 额外的约定文件
+
+```react
+	额外的模板文件
+    src下的pages文件夹加入document.ejs
+	ejs文件为自定义的模板文件(相当于react项目的index.html)
+	
+	src下的global.js
+	//全局的js文件,该文件中的代码，会在最开始的时候启动
+	
+	src下的app.js
+	//做运行时配置的代码
+		export function patchRoutes(routes) {//该函数会在umi读取完所有静态路由配置后执行
+            //动态的配置路由
+            //参数routes是默认路由配置
+            routes[0].routes.shift();
+        }
+
+		export const dva = {
+            config: {
+                //相当于new dva(配置)
+                onAction:[logger]
+            },
+            plugins:[]//相当于dva.use(插件)
+        }
+        
+        //项目下的.env文件
+        env:配置环境变量,这些变量会在umi编译期间发挥作用
+			UMI_ENV //开发配置，假设UMI_ENV定义值为local,则会按照.umirc.local.js文件配置
+            PORT 	//端口号
+            MOCK	//是否打开MOCK
+	
+```
+
+
+
+#### umi配置
+
+```react
+//书写在.umirc.js文件中
+	plugins:配置umijs的插件
+    routes:配置路由(会导致约定式路由)
+	history:设置路由模式
+    outputPath:"./out" 使用umi build打包后,打包的目录名称,默认是./dist
+	base:"/abc" 相当于之前BrowserRouter中的basename
+    publicPath:"./public/" 指定静态资源所在的目录 
+	exportStatic:true 开启该配置后，会打包成多个静态页面，每个页面对应一个路由，开启多页面应用的前提条件是:没有动态路由。
+```
+
+
+
 
 
 #### 路由跳转
@@ -136,4 +196,6 @@ index.js
 
 
 ```
+
+
 
