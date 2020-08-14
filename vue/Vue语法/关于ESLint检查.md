@@ -1,18 +1,49 @@
 #### 关闭Eslint检查
 
 ```js
-在vue.config.js中设置
+//推荐这样写巴拉巴拉吧
+1.在vue.config.js中设置       //需要关闭Eslint插件,不然虽然可以正常运行但是页面会显示爆红
  module.exports = {
      lintOnSave: false
  }
+
+
+
+//下面两种比较麻烦
+
+2.将eslint配置放在.eslintrc.js中时，设置
+	'no-unused-vars':'off'
+
+
+3.如果将eslint配置在package.json中
+"eslintConfig": {
+     "root": true,////此项是用来告诉eslint找当前配置文件不能往父级查找
+     "env": {
+       "node": true//此项指定环境的全局变量，下面的配置指定为node环境
+     },
+     "extends": [// 此项是用来配置vue.js风格，就是说写代码的时候要规范的写，如果你使用vs-code我觉得应该可以避免出错
+       "plugin:vue/essential",
+       "@vue/standard"
+     ],
+     "rules": {//规则配置写在这里
+       "indent": [1, 4]
+     },
+     "parserOptions": {
+       "parser": "babel-eslint"//此项是用来指定eslint解析器的，解析器必须符合规则，babel-eslint解析器是对babel解析器的包装使其与ESLint解析
+     }
+   },
 ```
+
+
 
 
 
 #### 关于.prettierrc.js的配置
 
 ```js
-只要 vscode 中安装了 ESlint 和 Prettier-code Formatter 插件
+//如果你不想关闭eslint，那就可以配置.prettierrc来改变vscode的代码格式化规则，让这个规则和eslint规则一致
+需要 vscode 中安装了 ESlint 和 Prettier-code Formatter 插件
+然后根目录下创建一个.prettierrc.js文件,加入下面代码
 
 module.exports = {
   // 超过最大值换行
@@ -48,7 +79,7 @@ module.exports = {
 
 
 
-#### 修改ESlint中的检查规则
+#### 修改ESlint中的检查规则(通用)
 
 ```js
 "no-alert": 0,//禁止使用alert confirm prompt

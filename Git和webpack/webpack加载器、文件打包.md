@@ -6,6 +6,10 @@
 less-loader  可以打包处理.less相关的文件
 sass-loader  可以打包处理.scss相关的文件
 url-loader   可以打包处理css中与url路径相关的文件
+
+	webpack loader得本质上是一个函数,它的作用是将某个源码字符串转换成另一个源码字符串返回。
+	loader函数将在模块解析的过程中被调用，然后得到最终的源码。
+	
 ```
 
 
@@ -57,6 +61,66 @@ url-loader   可以打包处理css中与url路径相关的文件
 注意:其中?之后的是loader的参数项
 	limit用来指定图片的大小，单位是字节(byte),只有小于limit数	 值的图片,才会被转为base64图片
 ```
+
+
+
+#### webpack使用plugin
+
+```js
+	plugin的本质是一个带有apply方法的对象,它能够把一些功能嵌入到webpack的编译过程中。
+	通常，我们习惯将该对象写成构造函数的模式
+    class MyPlugin{
+        apply(compiler){
+            
+        }
+    }
+		var plugin = new MyPlugin();
+
+	要将插件应用到webpack,需要把插件对象配置到webpack的数组中
+	module.exports = {
+        plugins:[
+            new MyPlugin()
+        ]
+    }
+```
+
+
+
+#### 复制静态资源
+
+```js
+	安装copy-webpack-plugin插件
+	在webpack.config.js中
+	const CopyPlugin = require("copy-webpack-plugin")
+	plugins:[
+        new CopyPlugin([
+            { from:"./public", to:"./"},
+        ])
+    ]
+```
+
+
+
+
+
+
+
+#### webpack环境区分
+
+```js
+  在package.json中
+		"scripts":{
+            "dev":"webpack --config webpack.dev.js",
+            "prod":"webpack --config webpack.prod.js"
+        }
+
+	在开始构建时,webpack如果发现配置是一个参数,会调用该函数,将函数返回的对象作为配置内容,因此，开发者可以根据不同的环境返回不同的对象
+	在调用webpack函数时，webpack会向函数传入一个参数env,该参数的值来自于webpack命令中给env指定的指,例如	
+	
+	
+```
+
+
 
 
 
