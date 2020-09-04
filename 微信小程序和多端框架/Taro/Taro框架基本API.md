@@ -103,5 +103,44 @@ export default class About extends Component{
 	onReachBottom(){
        //onReachBottomDistance,在触发距离内滑动期间,本事件只会被触发一次
     }
+
+
+监听用户滑动页面事件
+	onPageScroll(e){
+        if(e.scrollTop == 50)
+           Taro.showToast({
+           title:"success"
+           })
+           }
+        console.log(e.scrollTop)	//垂直方向已滚动距离
+    }
+    
+    
+监听用户点击页面内的转发按钮
+	onShareApppMessage(res){
+        if(res.from === "button"){
+            console.log(res.target)
+        }
+        return {
+            title:'自定义转发标题',
+            path:"/page/index/index",	//去往的页面
+            imggeUrl:"地址"
+        }
+    }
+
+监听屏幕水平切换时触发
+	onResize(){
+        
+    }
+	{
+        "pageOrientation":"auto"	//设置允许屏幕自动旋转
+    }
+
+点击tab时触发
+	onTabItemTap(Object){
+     	//index 被点击的tab序号,从0开始
+        //pagePath 被点击tab的页面路径
+        //text 被点击的tab文字
+    }
 ```
 

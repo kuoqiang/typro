@@ -219,3 +219,15 @@ axios.defaults.headers['mytoken'] = 'aqwer'//设置请求头
     })
 ```
 
+
+
+
+
+#### 动态类名绑定
+
+```html
+<van-button :class="{active:index == item}">编辑</van-button>
+
+<van-button :class="index == item ? 'active': '' ">编辑</van-button>
+```
+
