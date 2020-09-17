@@ -45,6 +45,14 @@
 
 
 
+#### 自动修复lint语法
+
+```
+使用 npm run lint --fix 命令  可以修复大部分不符合规范的lint语法
+```
+
+
+
 
 
 #### 关于.prettierrc.js的配置
